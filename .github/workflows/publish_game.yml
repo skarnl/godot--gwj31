@@ -25,7 +25,7 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       
-      - uses: olegtarasov/get-tag@v2
+      - uses: olegtarasov/get-tag@v2.1
         id: tagName
 
       - name: push ${{ matrix.platform }} release to itch.io
@@ -37,4 +37,3 @@ jobs:
           ITCH_USER: ${{ env.ITCH_USER }}
           PACKAGE: ${{ env.PROJECT_NAME }}--${{ matrix.platform }}.zip
           VERSION: ${{ steps.tagName.outputs.tag }}
-
