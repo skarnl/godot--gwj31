@@ -23,16 +23,12 @@ func _init_random_offset():
 func _input(event) -> void:
 	if event is InputEventMouseButton:
 		if (event.pressed):
-			if (!_check_if_hit(event.position)):
-				$ClickSpots.spawnMissedShot(event.position)
+			var adjustedAimPosition = event.position + aimingOffset
+			
+			if (!_check_if_hit(adjustedAimPosition)):
+				$ClickSpots.spawnMissedShot(adjustedAimPosition)
 			else:
 				$Target.stopMoving()
 
 func _check_if_hit(position: Vector2) -> bool:
-	var targetWidth = target.texture.get_width()
-	var targetHeight = target.texture.get_height()
-	
-	var hitHorizontal = position.x > target.position.x - targetWidth / 2 && position.x < target.position.x + targetWidth/2
-	var hitVertical = position.y > target.position.y  - targetHeight / 2 && position.y < target.position.y + targetHeight/2
-		
-	return hitHorizontal && hitVertical
+	return $Target.is_hit(position)
