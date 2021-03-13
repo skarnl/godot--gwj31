@@ -26,6 +26,10 @@ Game="*res://global/game.gd"
 
 [display]
 
+window/size/width=960
+window/size/height=540
+mouse_cursor/custom_image="res://art/crosshair.png"
+mouse_cursor/custom_image_hotspot=Vector2( 59, 62 )
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

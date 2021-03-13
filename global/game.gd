@@ -37,7 +37,7 @@ func transition_to(new_state: int) -> void:
 			SceneLoader.goto_scene(Screens.MAIN_MENU)
 		
 		GameState.GAME:
-			if _current_state in {GameState.MAIN_MENU: true}:
+			if _current_state in [GameState.SPLASH, GameState.MAIN_MENU]:
 				_current_state = new_state
 				SceneLoader.goto_scene(Screens.GAME)
 				
