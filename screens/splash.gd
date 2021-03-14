@@ -1,8 +1,23 @@
-extends Node2D
+extends Control
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	yield(get_tree().create_timer(3.0), "timeout")
-	
-	Game.transition_to(Game.GameState.MAIN_MENU)
+export(String) var game_title : String
+
+onready var title_node := $VBoxContainer/Title
+onready var animation := $AnimationPlayer
+onready var timer := $Timer
+
+
+func _ready() -> void:
+	setup()
+	intro()
+
+
+func setup() -> void:
+	title_node.text = game_title
+
+
+func intro() -> void:
+	animation.play("forefade")
+	yield(animation, "animation_finished")
+	animation.play("default")
