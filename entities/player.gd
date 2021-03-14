@@ -11,18 +11,23 @@ export var move_speed : Vector3
 
 var _direction := Vector3.ZERO
 var _state : int = States.WALK
+var _last_focus : InteractableInterface
 
 onready var _gimbal_x := $GimbalX
 onready var _gimbal_y := $GimbalX/GimbalY
 onready var camera := $GimbalX/GimbalY/Camera
+onready var interact_area := $GimbalX/GimbalY/InteractArea
+onready var interact_shape := $GimbalX/GimbalY/InteractArea/CollisionShape
 
 
 func _physics_process(delta : float) -> void:
 	state_machine()
+	interact_focus()
 
 
 func _input(event : InputEvent) -> void:
 	camera_movement(event)
+	interact(event)
 
 
 func state_machine() -> void:
@@ -84,3 +89,46 @@ func camera_movement(event : InputEvent) -> void:
 			GIMBAL_Y_MIN_ROTATION,
 			GIMBAL_Y_MAX_ROTATION
 		)
+
+
+func interact_focus() -> void:
+	var focus := get_closest_interactable()
+	
+	if _last_focus:
+		_last_focus.unfocus()
+	if focus:
+		focus.focus()
+	
+	_last_focus = focus
+
+
+func interact(event : InputEvent) -> void:
+	if event.is_action_pressed("interact"):
+		var interactable := get_closest_interactable()
+		interactable.interact()
+
+
+func get_closest_interactable() -> InteractableInterface:
+	var interactables := get_interactables()
+	var shortest_distance : float = interact_shape.shape.length
+	var result : InteractableInterface = null
+	
+	for interactable in interactables:
+		var distance : float = transform.origin.distance_to(interactable.transform.origin)
+		
+		if distance < shortest_distance:
+			shortest_distance = distance
+			result = interactable
+	
+	return result
+
+
+func get_interactables() -> Array:
+	var potentials : Array = interact_area.get_overlapping_areas()
+	var interactables : Array
+	
+	for potential in potentials:
+		if potential is InteractableInterface:
+			interactables.append(potential)
+	
+	return interactables
