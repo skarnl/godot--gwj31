@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://screens/splash.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/GWJ-31-Theme.png" type="Texture" id=2]
@@ -66,6 +66,22 @@ tracks/3/keys = {
 "values": [ Vector2( -80, 99 ), Vector2( -80, 99 ), Vector2( 0, 99 ) ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "fadeout"
+length = 2.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("ForeFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0.0352941, 0.0705882, 0.152941, 1 ) ]
+}
+
 [sub_resource type="Animation" id=5]
 length = 4.0
 tracks/0/type = "value"
@@ -112,16 +128,18 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
+margin_top = -80.0
 margin_right = 700.0
-margin_bottom = 95.0
+margin_bottom = 15.0
 custom_fonts/font = SubResource( 1 )
 text = "6"
 align = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 modulate = Color( 1, 1, 1, 0 )
+margin_left = -80.0
 margin_top = 99.0
-margin_right = 700.0
+margin_right = 620.0
 margin_bottom = 299.0
 texture = ExtResource( 2 )
 
@@ -159,6 +177,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/default = SubResource( 4 )
+anims/fadeout = SubResource( 6 )
 anims/forefade = SubResource( 5 )
 
 [node name="Timer" type="Timer" parent="."]
