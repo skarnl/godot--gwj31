@@ -62,6 +62,7 @@ func input_movement() -> void:
 	# Apply all calculations and movement to a variable for direction
 	_direction += camera_transform.basis.x * movement_vector.x
 	_direction += -camera_transform.basis.z * movement_vector.y
+	_direction = _direction.normalized()
 
 
 func apply_movement() -> void:
