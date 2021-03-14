@@ -13,9 +13,14 @@ onready var collision_shape := $CollisionShape
 onready var hint_mesh := $Hint
 
 
+func _ready() -> void:
+	collision_shape.shape = shape
+
+
 func _set_shape(new_shape : Shape) -> void:
 	shape = new_shape
-	collision_shape.shape = shape
+	if collision_shape:
+		collision_shape.shape = shape
 
 
 func interact() -> void:
@@ -24,9 +29,9 @@ func interact() -> void:
 
 func focus() -> void:
 	hint_mesh.show()
-	emit_signal("on_focus")
+	emit_signal("on_focused")
 
 
-func unfocuse() -> void:
+func unfocus() -> void:
 	hint_mesh.hide()
-	emit_signal("on_unfocus")
+	emit_signal("on_unfocused")
