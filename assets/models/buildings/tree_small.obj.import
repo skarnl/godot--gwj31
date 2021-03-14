@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/tree_small.obj-67a22a51397f2c75445890602ec99aed.mesh"
+
+[deps]
+
+files=[ "res://.import/tree_small.obj-67a22a51397f2c75445890602ec99aed.mesh" ]
+
+source_file="res://assets/models/buildings/tree_small.obj"
+dest_files=[ "res://.import/tree_small.obj-67a22a51397f2c75445890602ec99aed.mesh", "res://.import/tree_small.obj-67a22a51397f2c75445890602ec99aed.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
