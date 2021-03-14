@@ -21,3 +21,7 @@ func intro() -> void:
 	animation.play("forefade")
 	yield(animation, "animation_finished")
 	animation.play("default")
+	yield(animation, "animation_finished")
+	animation.play("fadeout")
+	yield(animation, "animation_finished")	
+	Game.transition_to(Game.GameState.MAIN_MENU)
