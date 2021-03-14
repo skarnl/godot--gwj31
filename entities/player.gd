@@ -4,12 +4,14 @@ extends KinematicBody
 const GIMBAL_Y_MIN_ROTATION := -80
 const GIMBAL_Y_MAX_ROTATION := 80
 const MOUSE_DESENTIFIER := 1000
+const GRAVITY := 9.8
 
 enum States { IDLE, WALK, DIALOGUE }
 
 export var move_speed : Vector3
 
 var _direction := Vector3.ZERO
+var _velocity := Vector3.ZERO
 var _state : int = States.WALK
 var _last_focus : InteractableInterface
 
@@ -21,7 +23,7 @@ onready var interact_shape := $GimbalX/GimbalY/InteractArea/CollisionShape
 
 
 func _physics_process(delta : float) -> void:
-	state_machine()
+	state_machine(delta)
 	interact_focus()
 
 
@@ -30,14 +32,14 @@ func _input(event : InputEvent) -> void:
 	interact(event)
 
 
-func state_machine() -> void:
+func state_machine(delta : float) -> void:
 	match _state:
 		States.IDLE:
 			pass
 		
 		States.WALK:
 			input_movement()
-			apply_movement()
+			apply_movement(delta)
 		
 		States.DIALOGUE:
 			pass
@@ -70,8 +72,12 @@ func input_movement() -> void:
 	_direction = _direction.normalized()
 
 
-func apply_movement() -> void:
-	move_and_slide(_direction * move_speed, Vector3.UP)
+func apply_movement(delta : float) -> void:
+	_velocity.x = _direction.x * move_speed.x
+	_velocity.z = _direction.z * move_speed.z
+	_velocity.y += (-GRAVITY * delta) * int(not is_on_floor())
+	
+	move_and_slide(_velocity, Vector3.UP)
 
 
 func camera_movement(event : InputEvent) -> void:
