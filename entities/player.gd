@@ -3,6 +3,7 @@ extends KinematicBody
 
 const GIMBAL_Y_MIN_ROTATION := -80
 const GIMBAL_Y_MAX_ROTATION := 80
+const MOUSE_DESENTIFIER := 1000
 const MOUSE_SENSITIVITY := 200 # will be divided by 1000
 
 enum States { IDLE, WALK, DIALOGUE }
@@ -79,7 +80,7 @@ func camera_movement(event : InputEvent) -> void:
 		var camera_change := Vector2(
 			deg2rad(event.relative.x),
 			deg2rad(event.relative.y)
-		) * MOUSE_SENSITIVITY / 1000
+		) * MOUSE_SENSITIVITY / MOUSE_DESENTIFIER
 		
 		_gimbal_x.rotate_y(-camera_change.x)
 		_gimbal_y.rotate_x(-camera_change.y)
