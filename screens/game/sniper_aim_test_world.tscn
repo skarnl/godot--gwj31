@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://entities/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/buildings/tree_small.obj" type="ArrayMesh" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/models/scenery/ground_grass.obj" type="ArrayMesh" id=9]
 [ext_resource path="res://assets/models/scenery/flower_purpleB.obj" type="ArrayMesh" id=10]
 [ext_resource path="res://entities/sniper.gd" type="Script" id=11]
+[ext_resource path="res://materials/laser.tres" type="Material" id=13]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 25, 25 )
@@ -18,26 +19,16 @@ size = Vector2( 25, 25 )
 [sub_resource type="ConcavePolygonShape" id=2]
 data = PoolVector3Array( 12.5, 0, 12.5, -12.5, 0, 12.5, 12.5, 0, -12.5, -12.5, 0, 12.5, -12.5, 0, -12.5, 12.5, 0, -12.5 )
 
-[sub_resource type="SpatialMaterial" id=3]
-flags_transparent = true
-flags_do_not_receive_shadows = true
-flags_disable_ambient_light = true
-vertex_color_use_as_albedo = true
-albedo_color = Color( 1, 0, 0, 0.52549 )
-roughness = 0.2
-emission_enabled = true
-emission = Color( 0.992157, 0.0431373, 0.0156863, 1 )
-emission_energy = 9.27
-emission_operator = 0
-emission_on_uv2 = false
-distance_fade_mode = 1
-distance_fade_min_distance = 30.0
-distance_fade_max_distance = 5.0
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.898039, 0, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.964706, 0, 0.996078, 1 )
 
 [node name="Spatial" type="Spatial"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.999789, 0, -0.0205585, 0, 1, 0, 0.0205585, 0, -0.999789, -10.427, 0, 10.156 )
+transform = Transform( -0.0293173, 0, -0.99957, 0, 1, 0, 0.99957, 0, -0.0293173, -10.427, 0, 10.156 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
@@ -421,14 +412,19 @@ material/1 = null
 [node name="Sniper" type="Spatial" parent="."]
 script = ExtResource( 11 )
 
-[node name="Gun" type="Spatial" parent="Sniper"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.976, 0 )
+[node name="LaserOrigin" type="Spatial" parent="Sniper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 14, 17 )
 
-[node name="Laser" type="CSGCylinder" parent="Sniper"]
-transform = Transform( 1, 0, 0, 0, 0.888993, 0.457921, 0, -0.457921, 0.888993, -0.752745, 3.7885, 1.2147 )
+[node name="Laser" type="CSGCylinder" parent="Sniper/LaserOrigin"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -5 )
 radius = 0.028
-height = 13.4196
-material = SubResource( 3 )
+height = 10.0
+material = ExtResource( 13 )
 
-[node name="Target" type="Spatial" parent="Sniper"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.78071 )
+[node name="Gun" type="CSGSphere" parent="Sniper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8858, 14.4206, 17.8244 )
+material = SubResource( 5 )
+
+[node name="Target" type="CSGSphere" parent="Sniper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.111, 0, -5.78071 )
+material = SubResource( 6 )
