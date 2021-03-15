@@ -111,7 +111,8 @@ func interact_focus() -> void:
 func interact(event : InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		var interactable := get_closest_interactable()
-		interactable.interact()
+		if interactable:
+			interactable.interact()
 
 
 func get_closest_interactable() -> InteractableInterface:
