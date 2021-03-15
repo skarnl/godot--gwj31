@@ -2,7 +2,8 @@
 
 [ext_resource path="res://entities/interactable_interface.gd" type="Script" id=1]
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 1, 0.5 )
 
 [sub_resource type="SpatialMaterial" id=2]
 flags_transparent = true
@@ -10,18 +11,20 @@ flags_unshaded = true
 flags_no_depth_test = true
 albedo_color = Color( 1, 0.984314, 0.0117647, 0.352941 )
 
-[sub_resource type="SphereMesh" id=1]
+[sub_resource type="SphereMesh" id=3]
 material = SubResource( 2 )
 radial_segments = 16
 rings = 8
 
 [node name="InteractableInterface" type="Area"]
 script = ExtResource( 1 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
 
 [node name="Hint" type="MeshInstance" parent="."]
 transform = Transform( 0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, 0, 0 )
-mesh = SubResource( 1 )
+visible = false
+mesh = SubResource( 3 )
 material/0 = null
