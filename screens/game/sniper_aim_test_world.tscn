@@ -1,0 +1,423 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://entities/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/models/buildings/tree_small.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/models/buildings/tree_large.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/models/buildings/house_type05.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/models/buildings/house_type02.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://assets/models/buildings/house_type07.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://assets/models/buildings/house_type06.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://assets/models/buildings/house_type03.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://assets/models/scenery/ground_grass.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://assets/models/scenery/flower_purpleB.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://entities/sniper.gd" type="Script" id=11]
+[ext_resource path="res://materials/laser.tres" type="Material" id=13]
+
+[sub_resource type="ConcavePolygonShape" id=7]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.898039, 0, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.964706, 0, 0.996078, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.427, 10.2508, 10.156 )
+
+[node name="World" type="Spatial" parent="."]
+transform = Transform( 1.008, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="buildings" type="Spatial" parent="World"]
+
+[node name="house_type03" type="MeshInstance" parent="World/buildings"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -20.9248, 0, 10.8198 )
+mesh = ExtResource( 8 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="house_type02" type="MeshInstance" parent="World/buildings"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 25.3106, 0, 10.4164 )
+mesh = ExtResource( 5 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="house_type05" type="MeshInstance" parent="World/buildings"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 21.9709, 0, -10.5478 )
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="house_type06" type="MeshInstance" parent="World/buildings"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 1.3305, 0, 29.0015 )
+mesh = ExtResource( 7 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="house_type07" type="MeshInstance" parent="World/buildings"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -13.5885, 0, -21.1688 )
+mesh = ExtResource( 6 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+
+[node name="trees" type="Spatial" parent="World"]
+
+[node name="tree_small" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 21.4476, 0, -23.2591 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large12" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 19.2144, 0, -26.1984 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large11" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 17.8063, 0, -30.3829 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large10" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 19.855, 0, -35.513 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large9" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 25.6798, 0, -39.5026 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large8" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 25.1047, 0, -34.598 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large7" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 29.6259, 0, -36.9732 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large6" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 30.025, 0, -32.618 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large5" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 29.6335, 0, -28.9704 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large4" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 25.466, 0, -26.4627 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large3" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 24.8138, 0, -30.3183 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large13" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -5.31444, 0, -23.2591 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large14" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -7.54768, 0, -26.1984 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large15" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -8.95581, 0, -30.3829 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large16" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -6.90705, 0, -35.5127 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large17" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -1.08224, 0, -39.5025 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large18" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -1.65739, 0, -34.598 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large19" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 2.86383, 0, -36.9732 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large20" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 3.26296, 0, -32.618 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large21" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 2.87148, 0, -28.9704 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large22" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -1.29607, 0, -26.4626 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large23" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -1.94827, 0, -30.3183 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large24" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -33.9651, 0, 15.2531 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large25" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -36.1983, 0, 12.3138 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large26" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -37.6065, 0, 8.12928 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large27" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -35.5577, 0, 2.99947 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large28" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -29.7329, 0, -0.990391 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large29" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -30.308, 0, 3.91419 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large30" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -25.7868, 0, 1.53896 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large31" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -25.3877, 0, 5.89415 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large33" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -29.9467, 0, 12.0495 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large34" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -30.5989, 0, 8.19382 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large35" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0.123066, 0, 17.2405 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large36" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -2.11018, 0, 14.3012 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large37" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -3.51831, 0, 10.1167 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large38" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -1.46955, 0, 4.98691 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large39" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 4.35526, 0, 0.997051 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large40" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 3.78012, 0, 5.90163 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large41" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 8.30134, 0, 3.5264 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large42" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 8.70046, 0, 7.8816 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large43" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 8.30898, 0, 11.5292 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large44" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 4.14143, 0, 14.037 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large45" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 3.48924, 0, 10.1813 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="tree_large2" type="MeshInstance" parent="World/trees"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -1.494, 0, -2 )
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+
+[node name="ground_grass" type="MeshInstance" parent="World"]
+transform = Transform( 99.2064, 0, 0, 0, 100, 0, 0, 0, 100, 0.0240964, -0.0661922, -0.187319 )
+mesh = ExtResource( 9 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="World/ground_grass"]
+
+[node name="CollisionShape" type="CollisionShape" parent="World/ground_grass/StaticBody"]
+transform = Transform( -2.5, 0, 0, 0, 0.0585155, 0, 0, 0, -2, 0, -0.0154693, 0 )
+shape = SubResource( 7 )
+
+[node name="flower_purpleB" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.575, 0, -6.52712 )
+mesh = ExtResource( 10 )
+material/0 = null
+material/1 = null
+
+[node name="flower_purpleB2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.575, 0, -6.18033 )
+mesh = ExtResource( 10 )
+material/0 = null
+material/1 = null
+
+[node name="flower_purpleB3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53267, 0, -6.43514 )
+mesh = ExtResource( 10 )
+material/0 = null
+material/1 = null
+
+[node name="flower_purpleB7" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53267, 0, -6.43514 )
+mesh = ExtResource( 10 )
+material/0 = null
+material/1 = null
+
+[node name="flower_purpleB6" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.24144, 0, -5.80571 )
+mesh = ExtResource( 10 )
+material/0 = null
+material/1 = null
+
+[node name="flower_purpleB5" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08343, 0, -5.96659 )
+mesh = ExtResource( 10 )
+material/0 = null
+material/1 = null
+
+[node name="flower_purpleB4" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.18111, 0, -6.35176 )
+mesh = ExtResource( 10 )
+material/0 = null
+material/1 = null
+
+[node name="Sniper" type="Spatial" parent="."]
+script = ExtResource( 11 )
+
+[node name="LaserOrigin" type="Spatial" parent="Sniper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 14, 17 )
+
+[node name="Laser" type="CSGCylinder" parent="Sniper/LaserOrigin"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -5 )
+radius = 0.028
+height = 10.0
+material = ExtResource( 13 )
+
+[node name="Gun" type="CSGSphere" parent="Sniper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8858, 14.4206, 17.8244 )
+visible = false
+material = SubResource( 5 )
+
+[node name="Target" type="CSGSphere" parent="Sniper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59443, 0, 0.386233 )
+material = SubResource( 6 )
