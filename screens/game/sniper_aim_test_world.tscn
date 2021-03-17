@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://entities/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/buildings/tree_small.obj" type="ArrayMesh" id=2]
@@ -10,17 +10,10 @@
 [ext_resource path="res://assets/models/buildings/house_type03.obj" type="ArrayMesh" id=8]
 [ext_resource path="res://assets/models/scenery/ground_grass.obj" type="ArrayMesh" id=9]
 [ext_resource path="res://assets/models/scenery/flower_purpleB.obj" type="ArrayMesh" id=10]
-[ext_resource path="res://entities/sniper.gd" type="Script" id=11]
+[ext_resource path="res://entities/sniper.tscn" type="PackedScene" id=11]
 [ext_resource path="res://screens/game/sniper_aim_controller.gd" type="Script" id=12]
-[ext_resource path="res://materials/laser.tres" type="Material" id=13]
 
 [sub_resource type="ConcavePolygonShape" id=1]
-
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.898039, 0, 1, 1 )
-
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.760784, 0.0117647, 1, 1 )
 
 [sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 1, 0.0117647, 0.290196, 1 )
@@ -406,25 +399,7 @@ mesh = ExtResource( 10 )
 material/0 = null
 material/1 = null
 
-[node name="Sniper" type="Spatial" parent="."]
-script = ExtResource( 11 )
-
-[node name="LaserOrigin" type="Spatial" parent="Sniper"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 14, 17 )
-
-[node name="Laser" type="CSGCylinder" parent="Sniper/LaserOrigin"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -5 )
-radius = 0.028
-height = 10.0
-material = ExtResource( 13 )
-
-[node name="Gun" type="CSGSphere" parent="Sniper"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8858, 14.4206, 17.8244 )
-material = SubResource( 2 )
-
-[node name="Target" type="CSGSphere" parent="Sniper"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59443, 0, 0.386233 )
-material = SubResource( 3 )
+[node name="Sniper" parent="." instance=ExtResource( 11 )]
 
 [node name="PossibleTargetLocations" type="Spatial" parent="."]
 
