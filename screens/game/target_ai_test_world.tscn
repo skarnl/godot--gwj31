@@ -1,19 +1,22 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://entities/npc.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/sniper.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/hud.tscn" type="PackedScene" id=4]
+[ext_resource path="res://screens/game/target_ai_test_world.gd" type="Script" id=5]
 
-[sub_resource type="NavigationMesh" id=3]
+[sub_resource type="NavigationMesh" id=1]
 vertices = PoolVector3Array( 3.1, 1.19345, 11.5, 3.1, 1.19345, 7.9, 1.6, 1.19345, 7.9, 3.1, 1.19345, 11.5, 1.6, 1.19345, 7.9, 0.7, 1.19345, 7, -4.1, 1.19345, 11.5, -11.3, 1.19345, 0.0999994, 0.7, 1.19345, 4, 1.6, 1.19345, 3.1, -4.1, 1.19345, 11.5, 0.7, 1.19345, 7, 0.7, 1.19345, 4, -11.3, 1.19345, 0.0999994, -11.3, 1.19345, 11.5, -3.8, 1.19345, -11.3, -11.3, 1.19345, -11.3, -11.3, 1.19345, 0.0999994, 1.6, 1.19345, 3.1, 4, 1.19345, 3.1, 4, 1.19345, -11.3, -3.8, 1.19345, -11.3, -11.3, 1.19345, 0.0999994, 5.5, 1.19345, 4, 5.5, 1.19345, 4.9, 11.5, 1.19345, 4.9, 4, 1.19345, 3.1, 5.5, 1.19345, 4, 11.5, 1.19345, 4.9, 11.5, 1.19345, -3.2, 11.5, 1.19345, -3.2, 11.5, 1.19345, -11.3, 4, 1.19345, -11.3, 4, 1.19345, 3.1, 4.6, 1.19345, 7.9, 3.1, 1.19345, 7.9, 3.1, 1.19345, 11.5, 5.8, 1.19345, 11.5, 11.5, 1.19345, 4.9, 5.5, 1.19345, 4.9, 5.5, 1.19345, 7, 12.1, 1.19345, 6.7, 5.5, 1.19345, 7, 4.6, 1.19345, 7.9, 5.8, 1.19345, 11.5, 5.8, 1.19345, 11.5, 6.7, 1.19345, 13, 9.1, 1.19345, 14.8, 14.8, 1.19345, 9.7, 12.1, 1.19345, 6.7, 5.5, 1.19345, 7 )
 polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 4, 3, 5 ), PoolIntArray( 5, 3, 6 ), PoolIntArray( 9, 8, 7 ), PoolIntArray( 11, 10, 12 ), PoolIntArray( 12, 10, 14 ), PoolIntArray( 12, 14, 13 ), PoolIntArray( 17, 16, 15 ), PoolIntArray( 18, 22, 19 ), PoolIntArray( 19, 22, 21 ), PoolIntArray( 19, 21, 20 ), PoolIntArray( 25, 24, 23 ), PoolIntArray( 27, 26, 28 ), PoolIntArray( 28, 26, 29 ), PoolIntArray( 31, 30, 32 ), PoolIntArray( 32, 30, 33 ), PoolIntArray( 35, 34, 36 ), PoolIntArray( 36, 34, 37 ), PoolIntArray( 39, 38, 40 ), PoolIntArray( 40, 38, 41 ), PoolIntArray( 44, 43, 42 ), PoolIntArray( 46, 45, 47 ), PoolIntArray( 47, 45, 50 ), PoolIntArray( 47, 50, 49 ), PoolIntArray( 47, 49, 48 ) ]
 cell/height = 0.75
 agent/radius = 1.0
 agent/max_climb = 0.1
 
-[sub_resource type="PlaneMesh" id=1]
+[sub_resource type="PlaneMesh" id=2]
 size = Vector2( 25, 25 )
 
-[sub_resource type="ConcavePolygonShape" id=2]
+[sub_resource type="ConcavePolygonShape" id=3]
 data = PoolVector3Array( 12.5, 0, 12.5, -12.5, 0, 12.5, 12.5, 0, -12.5, -12.5, 0, 12.5, -12.5, 0, -12.5, 12.5, 0, -12.5 )
 
 [sub_resource type="CubeMesh" id=4]
@@ -27,7 +30,11 @@ size = Vector3( 10, 2, 10 )
 [sub_resource type="ConcavePolygonShape" id=7]
 data = PoolVector3Array( -5, 1, 5, 5, 1, 5, -5, -1, 5, 5, 1, 5, 5, -1, 5, -5, -1, 5, 5, 1, -5, -5, 1, -5, 5, -1, -5, -5, 1, -5, -5, -1, -5, 5, -1, -5, 5, 1, 5, 5, 1, -5, 5, -1, 5, 5, 1, -5, 5, -1, -5, 5, -1, 5, -5, 1, -5, -5, 1, 5, -5, -1, -5, -5, 1, 5, -5, -1, 5, -5, -1, -5, 5, 1, 5, -5, 1, 5, 5, 1, -5, -5, 1, 5, -5, 1, -5, 5, 1, -5, -5, -1, 5, 5, -1, 5, -5, -1, -5, 5, -1, 5, 5, -1, -5, -5, -1, -5 )
 
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0.172549, 1, 0, 1 )
+
 [node name="Spatial" type="Spatial"]
+script = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, 0 )
@@ -37,19 +44,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 navigation_node = NodePath("../Navigation")
 move_speed = 16.0
 
+[node name="Sniper" parent="." instance=ExtResource( 3 )]
+
+[node name="Target" parent="Sniper" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.88825, 0, -5.80254 )
+
 [node name="Navigation" type="Navigation" parent="."]
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
-navmesh = SubResource( 3 )
+navmesh = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/MeshInstance"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/MeshInstance/StaticBody"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16138, 1, 5.44922 )
@@ -70,3 +82,11 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/MeshInstance3/StaticBody"]
 shape = SubResource( 7 )
+
+[node name="CSGSphere" type="CSGSphere" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.91562, 0, -5.79638 )
+material = SubResource( 8 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[editable path="Sniper"]
