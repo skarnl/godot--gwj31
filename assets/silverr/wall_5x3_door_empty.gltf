@@ -1,0 +1,96 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.3.48",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Wall"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Wall2_inside",
+            "pbrMetallicRoughness" : {}
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Wall",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "indices" : 2,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 12,
+            "max" : [
+                0,
+                3,
+                0
+            ],
+            "min" : [
+                -2.18556948539117e-07,
+                0,
+                -5
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 12,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5123,
+            "count" : 30,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 144,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 144,
+            "byteOffset" : 144
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 60,
+            "byteOffset" : 288
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 348,
+            "uri" : "data:application/octet-stream;base64,XAEwtET4DEBYm8C/eqxqtET4DEAAAKDAeqxqtAAAQEAAAKDAXAEwtAAAQEBYm8C/XAEwtAAAAABWm8C/eqxqtAAAAAAAAKDAAAAAAAAAAAAAAACAeqzqswAAAABYe/6+eqzqs0T4DEBYe/6+AAAAAET4DEAAAACAeqzqswAAQEBYe/6+AAAAAAAAQEAAAACAAACAPwAAAAAIxvSyAACAPwAAAAD4R4ay//9/PwAAAAD4R4ayAACAPwAAAACIAhazAACAPwAAAAD3R4ayAACAPwAAAAD3R4ayAACAPwAAAADiEmy0AACAPwAAAADiEmy0AACAPwAAAAADyjC0AACAPwAAAADhEmy0AACAPwAAAACTJRO0AACAPwAAAADhEmy0AAABAAIAAAACAAMABAAFAAEABAABAAAABgAHAAgABgAIAAkACQAIAAoACQAKAAsACAAAAAMACAADAAoA"
+        }
+    ]
+}
