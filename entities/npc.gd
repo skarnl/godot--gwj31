@@ -3,8 +3,8 @@ extends KinematicBody
 
 enum States { IDLE, WANDERING, DESTINATION, TALKING, DEAD }
 
-const MAX_IDLE_TIME := 1.0
-const MIN_IDLE_TIME := 0.0
+const MAX_IDLE_TIME := 4.0
+const MIN_IDLE_TIME := 2.0
 const GRAVITY := 9.8
 const DISTANCE_MIN := 0.01
 
