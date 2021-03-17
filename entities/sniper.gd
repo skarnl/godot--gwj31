@@ -1,10 +1,13 @@
 extends Spatial
 
+signal target_killed
+
 
 onready var gun := $Gun
 onready var laser_origin := $LaserOrigin
 onready var laser := $LaserOrigin/Laser
 onready var target := $Target
+onready var laser_pointer = $Target/Area
 
 var original_target_position: Vector3
 var time := 0.0
@@ -18,6 +21,14 @@ func _ready() -> void:
 	target.hide()
 	
 	original_target_position = target.translation
+	laser_pointer.connect('body_entered', self, 'on_points_at_target')
+
+
+func on_points_at_target(body: Node) -> void:
+	if body.is_in_group('npc'):
+		emit_signal('target_killed')
+	else:
+		print("Ignore " + body.get_name())
 
 
 func _process(delta: float) -> void:
