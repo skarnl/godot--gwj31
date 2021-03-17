@@ -1,10 +1,10 @@
 extends KinematicBody
 
 
-enum States { IDLE, WANDERING, DESTINATION, TALKING }
+enum States { IDLE, WANDERING, DESTINATION, TALKING, DEAD }
 
-const MAX_IDLE_TIME := 16.0
-const MIN_IDLE_TIME := 5.0
+const MAX_IDLE_TIME := 1.0
+const MIN_IDLE_TIME := 0.0
 const GRAVITY := 9.8
 const DISTANCE_MIN := 0.01
 
@@ -73,6 +73,11 @@ func state_loaded(loaded_state : int) -> void:
 		
 		States.TALKING:
 			pass
+			
+		States.DEAD:
+			print("explode die killed ouch!")
+			set_physics_process(false)
+			rotate_y(90)
 
 
 func switch_state(new_state : int) -> void:
@@ -116,3 +121,7 @@ func apply_movement(delta : float) -> void:
 
 func _on_InteractableInterface_on_interact() -> void:
 	switch_state(States.TALKING)
+
+
+func die() -> void:
+	switch_state(States.DEAD)
