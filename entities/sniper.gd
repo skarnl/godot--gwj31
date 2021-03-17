@@ -8,12 +8,15 @@ onready var laser_origin := $LaserOrigin
 onready var laser := $LaserOrigin/Laser
 onready var target := $Target
 onready var laser_pointer = $Target/Area
+onready var raycast := $RayCast
 
 var original_target_position: Vector3
+var last_floor_position: Vector3
 var time := 0.0
 
 var new_target_position: Vector3
 var moving := false
+var aiming_at_target := false
 
 
 func _ready() -> void:
@@ -25,11 +28,22 @@ func _ready() -> void:
 
 
 func on_points_at_target(body: Node) -> void:
-	if body.is_in_group('npc'):
-		emit_signal('target_killed')
+	if body.is_in_group('npc') and !aiming_at_target:
+		_aim_at_target(body.translation)
 	else:
 		print("Ignore " + body.get_name())
 
+
+func _aim_at_target(target_position: Vector3) -> void:
+	# store the last aiming position
+	last_floor_position = original_target_position
+	
+	aiming_at_target = true
+	move_target_to(target_position + Vector3.UP) # Vector3.UP is to aim at the 'head'
+	
+#	this is only used now to stop the target from moving ^^
+#	emit_signal('target_killed')
+	
 
 func _process(delta: float) -> void:
 	if !moving:
@@ -49,7 +63,20 @@ func _wiggle_target(delta) -> void:
 	target.translation = original_target_position + Vector3(0, 0, z_pos)
 
 
-func _draw_laser() -> void:
+func _physics_process(delta):
+	var space_state = get_world().direct_space_state
+	# use global coordinates, not local to node
+	var result = space_state.intersect_ray(gun.translation, target.translation, [self])
+	
+	if !aiming_at_target and result and result.collider.is_in_group('npc'):
+		_aim_at_target(result.collider.translation)
+		
+	if aiming_at_target and !result:
+		aiming_at_target = false
+		move_target_to(last_floor_position)
+	
+
+func _draw_laser() -> void:	
 	laser.height = gun.translation.distance_to(target.translation)
 	laser.translation.z = laser.height / 2 * -1
 	laser_origin.look_at_from_position(gun.translation, target.translation, Vector3.UP)

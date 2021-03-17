@@ -47,7 +47,8 @@ move_speed = 16.0
 [node name="Sniper" parent="." instance=ExtResource( 3 )]
 
 [node name="Target" parent="Sniper" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.88825, 0, -5.80254 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.13027, 0, -2.29793 )
+radius = 2.07867
 
 [node name="Navigation" type="Navigation" parent="."]
 
@@ -85,6 +86,7 @@ shape = SubResource( 7 )
 
 [node name="CSGSphere" type="CSGSphere" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.91562, 0, -5.79638 )
+visible = false
 material = SubResource( 8 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]

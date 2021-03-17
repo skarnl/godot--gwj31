@@ -3,14 +3,14 @@
 [ext_resource path="res://entities/sniper.gd" type="Script" id=1]
 [ext_resource path="res://materials/laser.tres" type="Material" id=2]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.898039, 0, 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.760784, 0.0117647, 1, 1 )
 
-[sub_resource type="SphereShape" id=5]
-radius = 1.00537
+[sub_resource type="SphereShape" id=3]
+radius = 2.21467
 
 [node name="Sniper" type="Spatial"]
 script = ExtResource( 1 )
@@ -26,13 +26,13 @@ material = ExtResource( 2 )
 
 [node name="Gun" type="CSGSphere" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8858, 14.4206, 17.8244 )
-material = SubResource( 2 )
+material = SubResource( 1 )
 
 [node name="Target" type="CSGSphere" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59443, 0, 0.386233 )
-material = SubResource( 3 )
+material = SubResource( 2 )
 
 [node name="Area" type="Area" parent="Target"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Target/Area"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
