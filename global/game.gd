@@ -4,7 +4,7 @@ extends Node
 
 
 var Screens = {
-	MAIN_MENU = 'res://screens/main_menu.tscn',
+	MAIN_MENU = 'res://screens/main_menu/main_menu.tscn',
 	GAME = 'res://screens/game/game.tscn',
 	PLAYER_MOVEMENT_TEST = 'res://screens/game/player_movement_test_world.tscn'
 }
@@ -43,7 +43,7 @@ func transition_to(new_state: int) -> void:
 			SceneLoader.goto_scene(Screens.MAIN_MENU)
 		
 		GameState.GAME:
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+#			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			
 			if _current_state in {GameState.MAIN_MENU: true}:
 				_current_state = new_state

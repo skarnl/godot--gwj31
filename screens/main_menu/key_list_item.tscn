@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://gui/flat_button.tres" type="StyleBox" id=1]
+[ext_resource path="res://gui/flat_button--focus.tres" type="StyleBox" id=2]
+[ext_resource path="res://screens/main_menu/key_list_item.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/fonts/anton/Anton.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = SubResource( 1 )
+
+[node name="KeyListItem" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 30
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Action" type="Label" parent="."]
+margin_top = 277.0
+margin_right = 321.0
+margin_bottom = 322.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "forward"
+
+[node name="KeyButton" type="Button" parent="."]
+margin_left = 351.0
+margin_top = 289.0
+margin_right = 672.0
+margin_bottom = 311.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/focus = ExtResource( 2 )
+custom_styles/normal = ExtResource( 1 )
+text = "W"
+
+[node name="AlternativeButton" type="Button" parent="."]
+margin_left = 702.0
+margin_top = 289.0
+margin_right = 1024.0
+margin_bottom = 311.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_styles/focus = ExtResource( 2 )
+custom_styles/normal = ExtResource( 1 )
+text = "[empty]"
