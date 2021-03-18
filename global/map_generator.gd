@@ -1,12 +1,18 @@
 extends Node
 
 
-var map_data := []
+# Super easy to use! To create a new map, simply just do `generate_map(size)`!
+# You can access the size of the map using `map_dimensions`, and you can get
+# map data with `map_data`.
+# Map data is represented with an array of RoomData.
+
+
+var map_data := [] # Only RoomData should go in here.
 var map_dimensions := Vector2(2, 8)
 
 
-func _ready() -> void:
-	generate_map()
+#func _ready() -> void:
+#	generate_map(map_dimensions)
 
 
 func bloat_map() -> void:
@@ -28,7 +34,9 @@ func clear_map() -> void:
 	map_data = []
 
 
-func generate_map() -> void:
+func generate_map(size : Vector2) -> void:
+	map_dimensions = size
+	
 	clear_map()
 	bloat_map()
 	
@@ -41,27 +49,8 @@ func generate_map() -> void:
 	for room in map_data:
 		update_room(room.position)
 	
-	for y in map_dimensions.y:
-		var top : PoolStringArray
-		var middle : PoolStringArray
-		var bottom : PoolStringArray
-		
-		for x in map_dimensions.x:
-			top.append(get_room(Vector2(x, y)).get_top_repr())
-			middle.append(get_room(Vector2(x, y)).get_middle_repr())
-			bottom.append(get_room(Vector2(x, y)).get_bottom_repr())
-		
-		var top_r : String
-		var middle_r : String
-		var bottom_r : String
-		
-		for s in top: top_r += s
-		for s in middle: middle_r += s
-		for s in bottom: bottom_r += s
-		
-		print(top_r)
-		print(middle_r)
-		print(bottom_r)
+	# Represent how the map looks in text because the interpretor isn't made yet.
+#	represent_map()
 
 
 func generate_room() -> RoomData:
@@ -107,9 +96,35 @@ func update_room(room_coords : Vector2) -> void:
 
 func make_doors_for_rooms() -> void:
 	for room in map_data:
+		# If we end up having time for the multi-setting idea, come back to this.
 		room.room_type = RoomData.RoomTypes.NORMAL
+		
 		match room.room_type:
 			RoomData.RoomTypes.NORMAL:
 				room.set_random_walls(RoomData.WallTypes.DOOR)
 			RoomData.RoomTypes.GARDEN:
 				room.set_random_walls(RoomData.WallTypes.HEDGE_WALL)
+
+
+func represent_map() -> void:
+	for y in map_dimensions.y:
+		var top : PoolStringArray
+		var middle : PoolStringArray
+		var bottom : PoolStringArray
+		
+		for x in map_dimensions.x:
+			top.append(get_room(Vector2(x, y)).get_top_repr())
+			middle.append(get_room(Vector2(x, y)).get_middle_repr())
+			bottom.append(get_room(Vector2(x, y)).get_bottom_repr())
+		
+		var top_r : String
+		var middle_r : String
+		var bottom_r : String
+		
+		for s in top: top_r += s
+		for s in middle: middle_r += s
+		for s in bottom: bottom_r += s
+		
+		print(top_r)
+		print(middle_r)
+		print(bottom_r)
