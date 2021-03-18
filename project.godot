@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "InteractableInterface",
 "language": "GDScript",
 "path": "res://entities/interactable_interface.gd"
+}, {
+"base": "Node",
+"class": "RoomData",
+"language": "GDScript",
+"path": "res://entities/room_data.gd"
 } ]
 _global_script_class_icons={
-"InteractableInterface": ""
+"InteractableInterface": "",
+"RoomData": ""
 }
 
 [application]
@@ -29,6 +35,7 @@ config/icon="res://assets/images/icon.png"
 SceneLoader="*res://global/scene_loader.gd"
 Game="*res://global/game.gd"
 ObjectiveManager="*res://global/objective_manager.gd"
+MapGenerator="*res://global/map_generator.gd"
 
 [display]
 
@@ -60,11 +67,6 @@ move_backward={
 interact={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
- ]
-}
-switch_target={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":74,"unicode":0,"echo":false,"script":null)
  ]
 }
 
