@@ -226,7 +226,6 @@ func _processDirection() -> Vector3:
 	lookingDirection += firstPersonCam.global_transform.basis.z * movementAxisValue.y
 	lookingDirection = lookingDirection.normalized()
 	return lookingDirection
-	pass
 
 func processMovement(delta):    
 	# Horizontal Movement (Spring Dampened)
