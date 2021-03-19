@@ -39,7 +39,7 @@ var _settings := {
 			"name": "interact",
 			"input_name": "interact",
 			"key": KEY_E,
-			"alt_key": KEY_SPACE,
+			"alt_key": null,
 		},	
 	},
 	Category.SOUND: {
@@ -75,6 +75,23 @@ func changeInputMappingKey(action_index: int, key_scancode: int, type: String) -
 
 	_add_action_event(action_name, action_settings['key'])
 	_add_action_event(action_name, action_settings['alt_key'])
+	
+	_settings[Category.KEY_BINDINGS][action_index] = action_settings
+	
+	
+func removeInputMappingKey(action_index: int, type: String) -> void:
+	var action_settings = _settings[Category.KEY_BINDINGS][action_index]
+	var action_name = action_settings.input_name
+	
+	action_settings[type] = null
+	
+	InputMap.action_erase_events(action_name)
+
+	if (action_settings['key']):
+		_add_action_event(action_name, action_settings['key'])
+		
+	if (action_settings['alt_key']):
+		_add_action_event(action_name, action_settings['alt_key'])
 	
 	_settings[Category.KEY_BINDINGS][action_index] = action_settings
 	

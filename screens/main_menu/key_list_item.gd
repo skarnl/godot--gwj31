@@ -30,8 +30,13 @@ func _on_KeyButton_pressed(type: String) -> void:
 	emit_signal('change_key_pressed', type)
 
 
-func update_key(key_scancode: int, type: String) -> void:
+func update_key(key_scancode, type: String) -> void:
+	var value = '[empty]'
+	
+	if key_scancode:
+		value = OS.get_scancode_string(key_scancode)
+	
 	if type == 'key':
-		$KeyButton.text = OS.get_scancode_string(key_scancode)
+		$KeyButton.text = value
 	else:
-		$AlternativeButton.text = OS.get_scancode_string(key_scancode)
+		$AlternativeButton.text = value
