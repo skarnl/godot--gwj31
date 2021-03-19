@@ -85,7 +85,7 @@ func camera_movement(event : InputEvent) -> void:
 		var camera_change : Vector2 = Vector2(
 			deg2rad(event.relative.x),
 			deg2rad(event.relative.y)
-		) * Game.settings.look_sensitivity / MOUSE_DESENTIFIER
+		) * Settings.getSetting(Settings.Category.INPUT, Settings.InputSettings.LOOK_SENSITIVITY) / MOUSE_DESENTIFIER
 		
 		_gimbal_x.rotate_y(-camera_change.x)
 		_gimbal_y.rotate_x(-camera_change.y)
