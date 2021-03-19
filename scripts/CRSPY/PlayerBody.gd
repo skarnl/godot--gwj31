@@ -154,69 +154,57 @@ func checkState():
 	pass
 
 func processState():
+	#Movement and Shake Speed 
 	if playerStanceState == WALKING_PLAYER_STANCE_STATE:
 		if playerMovementState == IDLE_PLAYER_MOVEMENT_STATE:
 			maxSpeed = 0.0
 			currentShakeRange = idleShakeRange
 			currentShakePower = idleShakePower
-			if cameraState == ZOOM_CAM_STATE:
-				targetFOV = zoomFOV
-			else:
-				targetFOV = normalFOV
 			pass
 		elif playerMovementState == WALK_FORWARD_MOVEMENT_STATE:
 			maxSpeed = walkForwardSpeed
 			currentShakeRange = walkForwardShakeRange
 			currentShakePower = walkForwardShakePower
-			if cameraState == ZOOM_CAM_STATE:
-				targetFOV = zoomFOV
-			else:
-				targetFOV = normalFOV
 			pass
 		elif playerMovementState == WALK_BACKWARD_MOVEMENT_STATE:
 			maxSpeed = walkBackwardSpeed
 			currentShakeRange = walkBackwardShakeRange
 			currentShakePower = walkBackwardShakePower
-			targetFOV = moveBackwardsFOV
 			pass
 		elif playerMovementState == STRAFING_MOVEMENT_STATE:
 			maxSpeed = strafeSpeed
 			currentShakeRange = strafeShakeRange
 			currentShakePower = strafeShakePower
-			if cameraState == ZOOM_CAM_STATE:
-				targetFOV = zoomFOV
-			else:
-				targetFOV = normalFOV
-			pass
 		pass
 
 	elif playerStanceState == STANDING_PLAYER_STANCE_STATE:
 		maxSpeed = 0.0
 		currentShakeRange = idleShakeRange
 		currentShakePower = idleShakePower
-		if cameraState == ZOOM_CAM_STATE:
-			targetFOV = zoomFOV
-		else:
-			targetFOV = normalFOV
 		pass
 
 	elif playerStanceState == SPRINTING_PLAYER_STANCE_STATE:
 		maxSpeed = sprintSpeed
 		currentShakeRange = sprintShakeRange
 		currentShakePower = sprintShakePower
-		targetFOV = sprintFOV
 		pass
 
 	elif playerStanceState == SLOW_WALK_PLAYER_STANCE_STATE:
 		maxSpeed = slowWalkSpeed
 		currentShakeRange = slowWalkShakeRange
 		currentShakePower = slowWalkShakePower
-		if cameraState == ZOOM_CAM_STATE:
-			targetFOV = zoomFOV
-		else:
-			targetFOV = normalFOV
 		pass
 
+	# Camera FOV Settings
+	if cameraState == ZOOM_CAM_STATE:
+		targetFOV = zoomFOV
+	else:
+		if	playerStanceState == SPRINTING_PLAYER_STANCE_STATE
+			targetFOV = sprintFOV 
+		elif playerStanceState == WALK_BACKWARD_MOVEMENT_STATE:
+			targetFOV = moveBackwardsFOV
+		else:
+			targetFOV = normalFOV
 	pass
 
 func _processDirection() -> Vector3:
