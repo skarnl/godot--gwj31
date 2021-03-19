@@ -25,7 +25,7 @@ var _previous_state: int
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	
-	
+
 func start_game():
 	transition_to(GameState.GAME)
 	
@@ -40,7 +40,7 @@ func transition_to(new_state: int) -> void:
 			SceneLoader.goto_scene(Screens.MAIN_MENU)
 		
 		GameState.GAME:
-#			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			
 			if _current_state in {GameState.MAIN_MENU: true}:
 				_current_state = new_state

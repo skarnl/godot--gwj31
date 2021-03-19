@@ -41,7 +41,7 @@ func _on_KeyList_change_key_pressed(action_index, type) -> void:
 	var key_scancode = yield(change_key_dialog, "key_selected")
 	
 	if key_scancode == KEY_ESCAPE:
-		Settings.removeInputMappingKey(action_index, type)
+		Settings.changeInputMappingKey(action_index, null, type)
 		key_list.update_key(action_index, null, type)
 	else:
 		Settings.changeInputMappingKey(action_index, key_scancode, type)
