@@ -51,9 +51,16 @@ export var maxLookAngle: float = 70.0
 export var normalFOV: float = 55.0
 export var zoomFOV: float = 45.0
 export var sprintFOV: float = 65.0
-export var moveBackwardsFOV: float = 58.0
+export var walkBackwardFOV: float = 58.0
 export var fovSpeed: float = 3.0
 var targetFOV: float = 55.0
+
+export var sprintTiltDeg: float = -8.0 # X-Rot
+export var walkForwardTiltDeg: float = -3.0 # X-Rot
+export var walkBackwardTiltDeg: float = 3.0 # X-Rot
+export var strafeTiltDeg: float = 3.0 #Z-Rot
+var targetZTilt: float = 0.0
+var targetXTilt: float = 0.0
 
 # Camera Shake Properties
 var idleShakeRange: float = 3.5
@@ -165,46 +172,70 @@ func processState():
 			maxSpeed = walkForwardSpeed
 			currentShakeRange = walkForwardShakeRange
 			currentShakePower = walkForwardShakePower
+			targetXTilt = deg2rad(walkForwardTiltDeg)
 			pass
 		elif playerMovementState == WALK_BACKWARD_MOVEMENT_STATE:
 			maxSpeed = walkBackwardSpeed
 			currentShakeRange = walkBackwardShakeRange
 			currentShakePower = walkBackwardShakePower
+			targetXTilt = deg2rad(walkBackwardTiltDeg)
 			pass
 		elif playerMovementState == STRAFING_MOVEMENT_STATE:
 			maxSpeed = strafeSpeed
 			currentShakeRange = strafeShakeRange
 			currentShakePower = strafeShakePower
+			if movementAxisValue.x < 0.0:
+				targetZTilt = deg2rad(strafeTiltDeg)
+			elif movementAxisValue.x > 0.0:
+				targetZTilt = deg2rad(-strafeTiltDeg)
+			else:
+				targetZTilt = deg2rad(0.0)
+
 		pass
 
 	elif playerStanceState == STANDING_PLAYER_STANCE_STATE:
 		maxSpeed = 0.0
 		currentShakeRange = idleShakeRange
 		currentShakePower = idleShakePower
+		targetXTilt = deg2rad(0.0)
+		targetZTilt = deg2rad(0.0)
 		pass
 
 	elif playerStanceState == SPRINTING_PLAYER_STANCE_STATE:
 		maxSpeed = sprintSpeed
 		currentShakeRange = sprintShakeRange
 		currentShakePower = sprintShakePower
+		targetXTilt = deg2rad(sprintTiltDeg)
+		targetZTilt = deg2rad(0.0)
 		pass
 
 	elif playerStanceState == SLOW_WALK_PLAYER_STANCE_STATE:
 		maxSpeed = slowWalkSpeed
 		currentShakeRange = slowWalkShakeRange
 		currentShakePower = slowWalkShakePower
+		targetXTilt = deg2rad(0.0)
+		targetZTilt = deg2rad(0.0)
 		pass
 
-	# Camera FOV Settings
+	# Camera FOV & Tilt Settings
 	if cameraState == ZOOM_CAM_STATE:
 		targetFOV = zoomFOV
 	else:
-		if	playerStanceState == SPRINTING_PLAYER_STANCE_STATE
-			targetFOV = sprintFOV 
+		if	playerStanceState == SPRINTING_PLAYER_STANCE_STATE:
+			targetFOV = sprintFOV
+			
 		elif playerStanceState == WALK_BACKWARD_MOVEMENT_STATE:
-			targetFOV = moveBackwardsFOV
+			targetFOV = walkBackwardFOV
 		else:
 			targetFOV = normalFOV
+			# if playerMovementState == STRAFING_MOVEMENT_STATE:
+			# 	if movementAxisValue.x < DEAD_ZONE:
+			# 		curTiltDegZ = -strafeTiltDeg
+			# 	elif movementAxisValue.x > DEAD_ZONE:
+			# 		curTiltDegZ = strafeTiltDeg
+			# 	else:
+			# 		curTiltDegZ = 0.0
+
 	pass
 
 func _processDirection() -> Vector3:
@@ -252,6 +283,11 @@ func _input(event):
 
 # Game Juice/Feel
 func processCamera(delta):
+	# Tilts
+	firstPersonCam.rotation.x = lerp(firstPersonCam.rotation.x, targetXTilt, delta * cameraLerpSpeed)
+	firstPersonCam.rotation.z = lerp(firstPersonCam.rotation.z, targetZTilt, delta * cameraLerpSpeed)
+
+	# FOV & Camera Shake
 	firstPersonCam.fov = lerp(firstPersonCam.fov, targetFOV, delta * fovSpeed)
 	processShake(delta)
 	pass
