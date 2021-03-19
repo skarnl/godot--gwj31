@@ -1,18 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://screens/main_menu/main_menu.gd" type="Script" id=1]
-[ext_resource path="res://screens/main_menu/options.gd" type="Script" id=2]
-[ext_resource path="res://assets/fonts/anton_dynamic_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://screens/main_menu/options_menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui/flat_button.tres" type="StyleBox" id=4]
 [ext_resource path="res://gui/flat_button--focus.tres" type="StyleBox" id=5]
-[ext_resource path="res://screens/main_menu/key_list.gd" type="Script" id=6]
-
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://assets/fonts/anton/Anton.ttf"
-
-[sub_resource type="DynamicFont" id=2]
-size = 30
-font_data = SubResource( 1 )
 
 [node name="MainMenu" type="Control"]
 pause_mode = 2
@@ -95,95 +86,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="Options"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.203922, 0.247059, 0.337255, 1 )
-
-[node name="Content" type="VBoxContainer" parent="Options"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 50.0
-margin_top = 50.0
-margin_right = -50.0
-margin_bottom = -50.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="Label" parent="Options/Content"]
-margin_right = 924.0
-margin_bottom = 119.0
-custom_fonts/font = ExtResource( 3 )
-text = "Options"
-align = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="KeysHeader" type="HBoxContainer" parent="Options/Content"]
-margin_top = 123.0
-margin_right = 924.0
-margin_bottom = 168.0
-
-[node name="ActionLabel" type="Label" parent="Options/Content/KeysHeader"]
-margin_right = 305.0
-margin_bottom = 45.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
-text = "Action"
-
-[node name="KeyLabel" type="Label" parent="Options/Content/KeysHeader"]
-margin_left = 309.0
-margin_right = 614.0
-margin_bottom = 45.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
-text = "Key"
-align = 1
-
-[node name="AlternativeLabel" type="Label" parent="Options/Content/KeysHeader"]
-margin_left = 741.0
-margin_right = 924.0
-margin_bottom = 45.0
-size_flags_horizontal = 10
-custom_fonts/font = SubResource( 2 )
-text = "Alternative key"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Options/Content"]
-margin_top = 172.0
-margin_right = 924.0
-margin_bottom = 500.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="KeyList" type="VBoxContainer" parent="Options/Content/ScrollContainer"]
-margin_right = 924.0
-margin_bottom = 328.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource( 6 )
-
-[node name="BackButton" type="Button" parent="Options"]
-margin_left = 391.5
-margin_top = 525.64
-margin_right = 632.5
-margin_bottom = 580.64
-size_flags_vertical = 3
-custom_styles/hover = ExtResource( 5 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/normal = ExtResource( 4 )
-custom_colors/font_color_pressed = Color( 0.203922, 0.247059, 0.337255, 1 )
-text = "Back"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Options" parent="." instance=ExtResource( 2 )]

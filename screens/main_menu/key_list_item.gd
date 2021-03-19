@@ -1,16 +1,37 @@
 extends HBoxContainer
 
 
-func init(actionName: String, key: String, alternative: String = '') -> void:
-	$Action.text = actionName
-	
-	$KeyButton.text = key
-	
-	if alternative != '':
-		$AlternativeButton.text = alternative
+
+signal change_key_pressed(type)
+
+
+func _ready() -> void:
+	$KeyButton.connect('pressed', self, '_on_KeyButton_pressed', ['key'])
+	$AlternativeButton.connect('pressed', self, '_on_KeyButton_pressed', ['alt_key'])
+
+
+func init(keySettings) -> void:
+	$Action.text = keySettings.name
+
+	$KeyButton.text = OS.get_scancode_string(keySettings.key)
+
+	if keySettings.alt_key:
+		$AlternativeButton.text = OS.get_scancode_string(keySettings.alt_key)
 	else:
 		$AlternativeButton.text = '[empty]'
+
 
 # helper to focus on the button
 func focus() -> void:
 	$KeyButton.grab_focus()
+
+
+func _on_KeyButton_pressed(type: String) -> void:
+	emit_signal('change_key_pressed', type)
+
+
+func update_key(key_scancode: int, type: String) -> void:
+	if type == 'key':
+		$KeyButton.text = OS.get_scancode_string(key_scancode)
+	else:
+		$AlternativeButton.text = OS.get_scancode_string(key_scancode)
