@@ -10,3 +10,7 @@ func init(actionName: String, key: String, alternative: String = '') -> void:
 		$AlternativeButton.text = alternative
 	else:
 		$AlternativeButton.text = '[empty]'
+
+# helper to focus on the button
+func focus() -> void:
+	$KeyButton.grab_focus()
