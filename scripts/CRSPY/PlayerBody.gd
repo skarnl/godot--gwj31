@@ -173,12 +173,14 @@ func processState():
 			currentShakeRange = walkForwardShakeRange
 			currentShakePower = walkForwardShakePower
 			targetXTilt = deg2rad(walkForwardTiltDeg)
+			targetZTilt = deg2rad(0.0)
 			pass
 		elif playerMovementState == WALK_BACKWARD_MOVEMENT_STATE:
 			maxSpeed = walkBackwardSpeed
 			currentShakeRange = walkBackwardShakeRange
 			currentShakePower = walkBackwardShakePower
 			targetXTilt = deg2rad(walkBackwardTiltDeg)
+			targetZTilt = deg2rad(0.0)
 			pass
 		elif playerMovementState == STRAFING_MOVEMENT_STATE:
 			maxSpeed = strafeSpeed
@@ -220,21 +222,16 @@ func processState():
 	# Camera FOV & Tilt Settings
 	if cameraState == ZOOM_CAM_STATE:
 		targetFOV = zoomFOV
+		targetXTilt = deg2rad(0.5)
+		targetZTilt = deg2rad(1.0)
 	else:
 		if	playerStanceState == SPRINTING_PLAYER_STANCE_STATE:
-			targetFOV = sprintFOV
-			
+			targetFOV = sprintFOV			
 		elif playerStanceState == WALK_BACKWARD_MOVEMENT_STATE:
 			targetFOV = walkBackwardFOV
 		else:
 			targetFOV = normalFOV
-			# if playerMovementState == STRAFING_MOVEMENT_STATE:
-			# 	if movementAxisValue.x < DEAD_ZONE:
-			# 		curTiltDegZ = -strafeTiltDeg
-			# 	elif movementAxisValue.x > DEAD_ZONE:
-			# 		curTiltDegZ = strafeTiltDeg
-			# 	else:
-			# 		curTiltDegZ = 0.0
+
 
 	pass
 

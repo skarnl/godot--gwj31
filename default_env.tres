@@ -3,7 +3,22 @@
 [sub_resource type="ProceduralSky" id=1]
 
 [resource]
-background_mode = 2
+background_mode = 3
 background_sky = SubResource( 1 )
-dof_blur_near_enabled = true
+fog_enabled = true
+fog_color = Color( 0, 0, 0, 1 )
+fog_sun_color = Color( 0, 0, 0, 1 )
+fog_depth_begin = 0.0
+fog_depth_end = 5.0
+fog_depth_curve = 1.6245
+fog_transmit_enabled = true
+fog_height_min = 2153.6
+fog_height_curve = 1.1487
+tonemap_mode = 2
+auto_exposure_enabled = true
+ssao_enabled = true
+dof_blur_far_enabled = true
+dof_blur_far_distance = 3.76
+dof_blur_far_transition = 1.28
+dof_blur_far_amount = 0.16
 dof_blur_near_distance = 0.46
