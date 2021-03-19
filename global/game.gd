@@ -44,7 +44,7 @@ func transition_to(new_state: int) -> void:
 			
 			if _current_state in {GameState.MAIN_MENU: true}:
 				_current_state = new_state
-				SceneLoader.goto_scene(Screens.GAME)
+				SceneLoader.goto_scene(Screens.PLAYER_MOVEMENT_TEST)
 				
 #			match new_state:
 #				GameState.PAUSED:
