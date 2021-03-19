@@ -15,11 +15,16 @@
 
 [sub_resource type="ConcavePolygonShape" id=7]
 
+<<<<<<< Updated upstream
 [sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0.898039, 0, 1, 1 )
 
 [sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 0.964706, 0, 0.996078, 1 )
+=======
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 1, 0.0117647, 0.290196, 1 )
+>>>>>>> Stashed changes
 
 [node name="Spatial" type="Spatial"]
 
@@ -401,6 +406,7 @@ mesh = ExtResource( 10 )
 material/0 = null
 material/1 = null
 
+<<<<<<< Updated upstream
 [node name="Sniper" type="Spatial" parent="."]
 script = ExtResource( 11 )
 
@@ -421,3 +427,32 @@ material = SubResource( 5 )
 [node name="Target" type="CSGSphere" parent="Sniper"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59443, 0, 0.386233 )
 material = SubResource( 6 )
+=======
+[node name="Sniper" parent="." instance=ExtResource( 11 )]
+
+[node name="PossibleTargetLocations" type="Spatial" parent="."]
+
+[node name="TargetPoint" type="CSGSphere" parent="PossibleTargetLocations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59443, 0, 27.7972 )
+material = SubResource( 2 )
+
+[node name="TargetPoint2" type="CSGSphere" parent="PossibleTargetLocations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3931, 0, 27.7972 )
+material = SubResource( 2 )
+
+[node name="TargetPoint3" type="CSGSphere" parent="PossibleTargetLocations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3931, 0, -1.40331 )
+material = SubResource( 2 )
+
+[node name="TargetPoint4" type="CSGSphere" parent="PossibleTargetLocations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.12252, 0, -21.1019 )
+material = SubResource( 2 )
+
+[node name="TargetPoint5" type="CSGSphere" parent="PossibleTargetLocations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9653, 0, -10.3765 )
+material = SubResource( 2 )
+
+[node name="TargetPoint6" type="CSGSphere" parent="PossibleTargetLocations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1767, 4.31138, 6.09503 )
+material = SubResource( 2 )
+>>>>>>> Stashed changes
