@@ -58,20 +58,20 @@ var _settings := {
 }
 
 
-func _validate(category, settingsKey = null) -> void:
-	if settingsKey:
-		if not _settings.has(category) or not _settings[category].has(settingsKey):
-			push_error("No settings exist for: " + category + ", " + settingsKey)
+func _validate(category, settings_key = null) -> void:
+	if settings_key:
+		if not _settings.has(category) or not _settings[category].has(settings_key):
+			push_error("No settings exist for: " + category + ", " + settings_key)
 	else:
 		if not _settings.has(category):
 			push_error("No settings exist for: " + category)
 
 
-func getInputMapping() -> Dictionary:
+func get_input_mapping() -> Dictionary:
 	return _settings[Category.KEY_BINDINGS]
 
 
-func changeInputMappingKey(action_index: int, key_scancode, type: String) -> void:
+func change_input_mapping_key(action_index: int, key_scancode, type: String) -> void:
 	var action_settings = _settings[Category.KEY_BINDINGS][action_index]
 	var action_name = action_settings.input_name
 	
@@ -94,11 +94,11 @@ func _add_action_event(action_name: String, key_scancode: int) -> void:
 	InputMap.action_add_event(action_name, new_event)
 
 
-func updateSetting(category, settingsKey, value) -> void:
-	_validate(category, settingsKey)
-	_settings[category][settingsKey] = value
+func update_setting(category, settings_key, value) -> void:
+	_validate(category, settings_key)
+	_settings[category][settings_key] = value
 
 
-func getSetting(category, settingsKey):
-	_validate(category, settingsKey)
-	return _settings[category][settingsKey]
+func get_setting(category, settings_key):
+	_validate(category, settings_key)
+	return _settings[category][settings_key]

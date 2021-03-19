@@ -10,13 +10,13 @@ func _ready() -> void:
 	$AlternativeButton.connect('pressed', self, '_on_KeyButton_pressed', ['alt_key'])
 
 
-func init(keySettings) -> void:
-	$Action.text = keySettings.name
+func init(key_settings) -> void:
+	$Action.text = key_settings.name
 
-	$KeyButton.text = OS.get_scancode_string(keySettings.key)
+	$KeyButton.text = OS.get_scancode_string(key_settings.key)
 
-	if keySettings.alt_key:
-		$AlternativeButton.text = OS.get_scancode_string(keySettings.alt_key)
+	if key_settings.alt_key:
+		$AlternativeButton.text = OS.get_scancode_string(key_settings.alt_key)
 	else:
 		$AlternativeButton.text = '[empty]'
 
