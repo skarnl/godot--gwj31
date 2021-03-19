@@ -2,7 +2,7 @@ extends Node
 
 enum Category { INPUT, KEY_BINDINGS, SOUND }
 enum InputSettings { LOOK_SENSITIVITY }
-enum KeySettings { FORWARD, BACKWARD, LEFT, RIGHT, INTERACT }
+enum KeySettings { FORWARD, BACKWARD, LEFT, RIGHT, INTERACT, PAUSE }
 enum SoundSettings { ENABLE_MUSIC, MUSIC_VOLUME, ENABLE_SFX, SFX_VOLUME }
 
 
@@ -40,6 +40,12 @@ var _settings := {
 			"input_name": "interact",
 			"key": KEY_E,
 			"alt_key": null,
+		},
+		KeySettings.PAUSE: {
+			"name": "pause",
+			"input_name": "pause",
+			"key": KEY_ESCAPE,
+			"alt_key": null,
 		},	
 	},
 	Category.SOUND: {
@@ -65,25 +71,11 @@ func getInputMapping() -> Dictionary:
 	return _settings[Category.KEY_BINDINGS]
 
 
-func changeInputMappingKey(action_index: int, key_scancode: int, type: String) -> void:
+func changeInputMappingKey(action_index: int, key_scancode, type: String) -> void:
 	var action_settings = _settings[Category.KEY_BINDINGS][action_index]
 	var action_name = action_settings.input_name
 	
 	action_settings[type] = key_scancode
-	
-	InputMap.action_erase_events(action_name)
-
-	_add_action_event(action_name, action_settings['key'])
-	_add_action_event(action_name, action_settings['alt_key'])
-	
-	_settings[Category.KEY_BINDINGS][action_index] = action_settings
-	
-	
-func removeInputMappingKey(action_index: int, type: String) -> void:
-	var action_settings = _settings[Category.KEY_BINDINGS][action_index]
-	var action_name = action_settings.input_name
-	
-	action_settings[type] = null
 	
 	InputMap.action_erase_events(action_name)
 

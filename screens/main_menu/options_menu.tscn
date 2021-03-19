@@ -26,6 +26,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.203922, 0.247059, 0.337255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Content" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -108,6 +111,7 @@ __meta__ = {
 }
 
 [node name="ChangeKeyDialog" type="Panel" parent="."]
+visible = false
 self_modulate = Color( 0.219608, 0.486275, 0.427451, 0.494118 )
 anchor_right = 1.0
 anchor_bottom = 1.0

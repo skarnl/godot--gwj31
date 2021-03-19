@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://screens/main_menu/main_menu.gd" type="Script" id=1]
+[ext_resource path="res://gui/pause_menu.gd" type="Script" id=1]
 [ext_resource path="res://screens/main_menu/options_menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/fonts/anton_dynamic_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://gui/flat_button.tres" type="StyleBox" id=4]
 [ext_resource path="res://gui/flat_button--focus.tres" type="StyleBox" id=5]
 
-[node name="MainMenu" type="Control"]
+[node name="PauseMenu" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,45 +24,56 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainButtons" type="Control" parent="."]
+[node name="Buttons" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Buttons" type="VBoxContainer" parent="MainButtons"]
+[node name="Buttons" type="VBoxContainer" parent="Buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -120.5
-margin_top = -147.0
+margin_top = -182.0
 margin_right = 120.5
-margin_bottom = 147.0
+margin_bottom = 182.0
 custom_constants/separation = 25
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StartButton" type="Button" parent="MainButtons/Buttons"]
+[node name="Label" type="Label" parent="Buttons/Buttons"]
 margin_right = 241.0
-margin_bottom = 81.0
+margin_bottom = 119.0
+custom_fonts/font = ExtResource( 3 )
+text = "PAUSE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueButton" type="Button" parent="Buttons/Buttons"]
+margin_top = 144.0
+margin_right = 241.0
+margin_bottom = 200.0
 size_flags_vertical = 3
 custom_styles/hover = ExtResource( 5 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-text = "Start"
+text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
-[node name="OptionsButton" type="Button" parent="MainButtons/Buttons"]
-margin_top = 106.0
+[node name="OptionsButton" type="Button" parent="Buttons/Buttons"]
+margin_top = 225.0
 margin_right = 241.0
-margin_bottom = 187.0
+margin_bottom = 282.0
 size_flags_vertical = 3
 custom_styles/hover = ExtResource( 5 )
 custom_styles/focus = ExtResource( 5 )
@@ -72,16 +84,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CreditsButton" type="Button" parent="MainButtons/Buttons"]
-margin_top = 212.0
+[node name="QuitButton" type="Button" parent="Buttons/Buttons"]
+margin_top = 307.0
 margin_right = 241.0
-margin_bottom = 294.0
+margin_bottom = 364.0
 size_flags_vertical = 3
 custom_styles/hover = ExtResource( 5 )
 custom_styles/focus = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_colors/font_color_pressed = Color( 0.203922, 0.247059, 0.337255, 1 )
-text = "Credits"
+text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
