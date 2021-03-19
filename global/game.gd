@@ -20,9 +20,6 @@ enum GameState {
 
 var _current_state: int = GameState.SPLASH setget _set_current_state
 var _previous_state: int
-var settings := {
-	"look_sensitivity" : 200
-}
 
 
 func _ready():
