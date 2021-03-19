@@ -34,7 +34,7 @@ func clear_map() -> void:
 	map_data = []
 
 
-func generate_map(size : Vector2) -> void:
+func generate_map(size : Vector2) -> Array:
 	map_dimensions = size
 	
 	clear_map()
@@ -49,6 +49,7 @@ func generate_map(size : Vector2) -> void:
 	for room in map_data:
 		update_room(room.position)
 	
+	return map_data
 	# Represent how the map looks in text because the interpretor isn't made yet.
 #	represent_map()
 
