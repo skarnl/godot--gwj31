@@ -32,7 +32,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Buttons" type="VBoxContainer" parent="."]
+[node name="MainButtons" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="MainButtons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -46,7 +53,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StartButton" type="Button" parent="Buttons"]
+[node name="StartButton" type="Button" parent="MainButtons/Buttons"]
 margin_right = 241.0
 margin_bottom = 81.0
 size_flags_vertical = 3
@@ -60,7 +67,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="OptionsButton" type="Button" parent="Buttons"]
+[node name="OptionsButton" type="Button" parent="MainButtons/Buttons"]
 margin_top = 106.0
 margin_right = 241.0
 margin_bottom = 187.0
@@ -74,7 +81,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CreditsButton" type="Button" parent="Buttons"]
+[node name="CreditsButton" type="Button" parent="MainButtons/Buttons"]
 margin_top = 212.0
 margin_right = 241.0
 margin_bottom = 294.0
@@ -156,9 +163,14 @@ text = "Alternative key"
 margin_top = 172.0
 margin_right = 924.0
 margin_bottom = 500.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="KeyList" type="VBoxContainer" parent="Options/Content/ScrollContainer"]
+margin_right = 924.0
+margin_bottom = 328.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 6 )
 
 [node name="BackButton" type="Button" parent="Options"]
