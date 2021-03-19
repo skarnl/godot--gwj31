@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://default_env.tres" type="Environment" id=1]
+[ext_resource path="res://scripts/CRSPY/PlayerBody.gd" type="Script" id=2]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.25
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.35
+
+[node name="PlayerBody" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
+script = ExtResource( 2 )
+walkBackwardSpeed = 0.8
+footCollider = NodePath("FootCollider")
+bodyCollider = NodePath("BodyCollider")
+cameraShaker = NodePath("CameraShaker")
+cameraRoot = NodePath("CameraShaker/CameraRoot")
+firstPersonCam = NodePath("CameraShaker/CameraRoot/Camera")
+rayCast = NodePath("CameraShaker/CameraRoot/Camera/RayCast")
+
+[node name="FootCollider" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="BodyCollider" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+shape = SubResource( 2 )
+
+[node name="CameraShaker" type="Spatial" parent="."]
+
+[node name="CameraRoot" type="Spatial" parent="CameraShaker"]
+
+[node name="Camera" type="Camera" parent="CameraShaker/CameraRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+environment = ExtResource( 1 )
+fov = 60.0
+
+[node name="RayCast" type="RayCast" parent="CameraShaker/CameraRoot/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -10 )
+collide_with_areas = true

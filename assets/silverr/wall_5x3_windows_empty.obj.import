@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/wall_5x3_windows_empty.obj-f1ea9e0bbad03114ce86e1ee174bf263.mesh"
+
+[deps]
+
+files=[ "res://.import/wall_5x3_windows_empty.obj-f1ea9e0bbad03114ce86e1ee174bf263.mesh" ]
+
+source_file="res://assets/silverr/wall_5x3_windows_empty.obj"
+dest_files=[ "res://.import/wall_5x3_windows_empty.obj-f1ea9e0bbad03114ce86e1ee174bf263.mesh", "res://.import/wall_5x3_windows_empty.obj-f1ea9e0bbad03114ce86e1ee174bf263.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
