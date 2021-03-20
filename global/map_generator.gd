@@ -77,6 +77,7 @@ func set_room(room_coords : Vector2, new_room : RoomData) -> void:
 		var room = map_data[i]
 		
 		if room.position == room_coords:
+			new_room.position = room.position
 			map_data[i] = new_room
 
 
