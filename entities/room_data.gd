@@ -59,7 +59,8 @@ func set_all_walls(wall_type : int) -> void:
 
 
 func set_random_walls(wall_type : int) -> void:
-	for i in range(1, 4):
+	for i in range(0, 4):
+		
 		var wall := randi() % 4
 		
 		match wall:
