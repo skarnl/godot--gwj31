@@ -1,0 +1,190 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://entities/npc.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/sniper.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/hud.tscn" type="PackedScene" id=4]
+[ext_resource path="res://screens/game/game_loop.gd" type="Script" id=5]
+[ext_resource path="res://gui/pause_menu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/interactable_interface.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gui/dialog.gd" type="Script" id=8]
+
+[sub_resource type="CylinderShape" id=8]
+
+[sub_resource type="NavigationMesh" id=1]
+vertices = PoolVector3Array( -41.4763, 1.19345, -48.3881, -47.7763, 1.19345, -48.3881, -47.7763, 1.19345, -41.7881, -35.1763, 1.19345, -48.3881, -41.4763, 1.19345, -48.3881, -47.7763, 1.19345, -41.7881, -35.1763, 1.19345, -48.3881, -47.7763, 1.19345, -41.7881, -47.7763, 1.19345, -35.1881, -28.8763, 1.19345, -48.3881, 1.72367, 1.19345, 3.21189, 3.22367, 1.19345, 3.21189, 3.22367, 1.19345, -48.3881, -3.37632, 1.19345, -48.3881, -28.8763, 1.19345, -48.3881, -47.7763, 1.19345, -35.1881, -47.7763, 1.19345, -28.5881, -22.2763, 1.19345, -48.3881, -47.7763, 1.19345, -1.58811, 0.823677, 1.19345, 4.11189, 1.72367, 1.19345, 3.21189, -47.7763, 1.19345, -8.18811, -22.2763, 1.19345, -48.3881, -47.7763, 1.19345, -28.5881, -47.7763, 1.19345, -21.6881, -15.9763, 1.19345, -48.3881, -47.7763, 1.19345, -15.0881, -47.7763, 1.19345, -8.18811, 1.72367, 1.19345, 3.21189, -3.37632, 1.19345, -48.3881, -9.67632, 1.19345, -48.3881, -15.9763, 1.19345, -48.3881, -47.7763, 1.19345, -21.6881, -47.7763, 1.19345, -15.0881, -9.67632, 1.19345, -48.3881, -47.7763, 1.19345, 5.31189, 0.823677, 1.19345, 5.31189, 0.823677, 1.19345, 4.11189, -47.7763, 1.19345, -1.58811, 47.9237, 1.19345, -41.7881, 47.9237, 1.19345, -48.3881, 36.5237, 1.19345, -48.3881, 47.9237, 1.19345, -35.1881, 47.9237, 1.19345, -41.7881, 36.5237, 1.19345, -48.3881, 47.9237, 1.19345, -28.5881, 47.9237, 1.19345, -35.1881, 36.5237, 1.19345, -48.3881, 47.9237, 1.19345, -21.6881, 47.9237, 1.19345, -28.5881, 36.5237, 1.19345, -48.3881, 47.9237, 1.19345, -21.6881, 36.5237, 1.19345, -48.3881, 25.4237, 1.19345, -48.3881, 47.9237, 1.19345, -15.0881, 4.72367, 1.19345, 3.21189, 47.9237, 1.19345, -1.58811, 47.9237, 1.19345, -8.18811, 14.3237, 1.19345, -48.3881, 3.22367, 1.19345, -48.3881, 3.22367, 1.19345, 3.21189, 5.62368, 1.19345, 4.11189, 5.62368, 1.19345, 5.31189, 47.9237, 1.19345, 5.31189, 5.62368, 1.19345, 4.11189, 47.9237, 1.19345, 5.31189, 47.9237, 1.19345, -1.58811, 4.72367, 1.19345, 3.21189, 47.9237, 1.19345, -8.18811, 47.9237, 1.19345, -15.0881, 25.4237, 1.19345, -48.3881, 14.3237, 1.19345, -48.3881, -47.7763, 1.19345, 37.7119, -47.7763, 1.19345, 48.5119, -41.4763, 1.19345, 48.5119, -47.7763, 1.19345, 37.7119, -41.4763, 1.19345, 48.5119, -35.1763, 1.19345, 48.5119, -47.7763, 1.19345, 37.7119, -35.1763, 1.19345, 48.5119, -28.8763, 1.19345, 48.5119, -47.7763, 1.19345, 37.7119, -28.8763, 1.19345, 48.5119, -22.2763, 1.19345, 48.5119, -47.7763, 1.19345, 26.9119, -47.7763, 1.19345, 37.7119, -22.2763, 1.19345, 48.5119, -15.9763, 1.19345, 48.5119, 0.823677, 1.19345, 5.31189, -47.7763, 1.19345, 5.31189, -47.7763, 1.19345, 16.1119, 3.22367, 1.19345, 48.5119, 3.22367, 1.19345, 7.71189, 1.72367, 1.19345, 7.71189, -3.37632, 1.19345, 48.5119, -47.7763, 1.19345, 26.9119, -15.9763, 1.19345, 48.5119, -9.67632, 1.19345, 48.5119, 0.823677, 1.19345, 6.81189, 0.823677, 1.19345, 5.31189, -47.7763, 1.19345, 16.1119, -3.37632, 1.19345, 48.5119, 1.72367, 1.19345, 7.71189, 0.823677, 1.19345, 6.81189, -9.67632, 1.19345, 48.5119, 36.5237, 1.19345, 48.5119, 47.9237, 1.19345, 48.5119, 47.9237, 1.19345, 37.7119, 36.5237, 1.19345, 48.5119, 47.9237, 1.19345, 37.7119, 47.9237, 1.19345, 26.9119, 25.4237, 1.19345, 48.5119, 36.5237, 1.19345, 48.5119, 47.9237, 1.19345, 26.9119, 47.9237, 1.19345, 16.1119, 47.9237, 1.19345, 5.31189, 5.62368, 1.19345, 5.31189, 5.62368, 1.19345, 6.81189, 14.3237, 1.19345, 48.5119, 25.4237, 1.19345, 48.5119, 47.9237, 1.19345, 16.1119, 4.72367, 1.19345, 7.71189, 3.22367, 1.19345, 7.71189, 3.22367, 1.19345, 48.5119, 5.62368, 1.19345, 6.81189, 4.72367, 1.19345, 7.71189, 3.22367, 1.19345, 48.5119, 14.3237, 1.19345, 48.5119 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 5, 4, 3 ), PoolIntArray( 7, 6, 8 ), PoolIntArray( 8, 6, 9 ), PoolIntArray( 11, 10, 12 ), PoolIntArray( 12, 10, 13 ), PoolIntArray( 15, 14, 16 ), PoolIntArray( 16, 14, 17 ), PoolIntArray( 19, 18, 20 ), PoolIntArray( 20, 18, 21 ), PoolIntArray( 22, 25, 23 ), PoolIntArray( 23, 25, 24 ), PoolIntArray( 27, 26, 28 ), PoolIntArray( 28, 26, 30 ), PoolIntArray( 28, 30, 29 ), PoolIntArray( 32, 31, 33 ), PoolIntArray( 33, 31, 34 ), PoolIntArray( 36, 35, 37 ), PoolIntArray( 37, 35, 38 ), PoolIntArray( 41, 40, 39 ), PoolIntArray( 44, 43, 42 ), PoolIntArray( 47, 46, 45 ), PoolIntArray( 50, 49, 48 ), PoolIntArray( 51, 54, 52 ), PoolIntArray( 52, 54, 53 ), PoolIntArray( 55, 60, 56 ), PoolIntArray( 56, 60, 57 ), PoolIntArray( 57, 60, 58 ), PoolIntArray( 58, 60, 59 ), PoolIntArray( 63, 62, 61 ), PoolIntArray( 64, 67, 65 ), PoolIntArray( 65, 67, 66 ), PoolIntArray( 69, 68, 70 ), PoolIntArray( 70, 68, 71 ), PoolIntArray( 73, 72, 74 ), PoolIntArray( 77, 76, 75 ), PoolIntArray( 80, 79, 78 ), PoolIntArray( 83, 82, 81 ), PoolIntArray( 86, 85, 87 ), PoolIntArray( 87, 85, 84 ), PoolIntArray( 90, 89, 88 ), PoolIntArray( 92, 91, 93 ), PoolIntArray( 93, 91, 94 ), PoolIntArray( 96, 95, 97 ), PoolIntArray( 97, 95, 100 ), PoolIntArray( 97, 100, 98 ), PoolIntArray( 98, 100, 99 ), PoolIntArray( 102, 101, 103 ), PoolIntArray( 103, 101, 104 ), PoolIntArray( 107, 106, 105 ), PoolIntArray( 108, 110, 109 ), PoolIntArray( 112, 111, 113 ), PoolIntArray( 113, 111, 114 ), PoolIntArray( 116, 115, 117 ), PoolIntArray( 117, 115, 120 ), PoolIntArray( 117, 120, 119 ), PoolIntArray( 117, 119, 118 ), PoolIntArray( 123, 122, 121 ), PoolIntArray( 125, 124, 126 ), PoolIntArray( 126, 124, 127 ) ]
+cell/height = 0.75
+agent/radius = 1.0
+agent/max_climb = 0.1
+
+[sub_resource type="PlaneMesh" id=2]
+size = Vector2( 25, 25 )
+
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( 12.5, 0, 12.5, -12.5, 0, 12.5, 12.5, 0, -12.5, -12.5, 0, 12.5, -12.5, 0, -12.5, 12.5, 0, -12.5 )
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="ConcavePolygonShape" id=5]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 10, 2, 10 )
+
+[sub_resource type="ConcavePolygonShape" id=7]
+data = PoolVector3Array( -5, 1, 5, 5, 1, 5, -5, -1, 5, 5, 1, 5, 5, -1, 5, -5, -1, 5, 5, 1, -5, -5, 1, -5, 5, -1, -5, -5, 1, -5, -5, -1, -5, 5, -1, -5, 5, 1, 5, 5, 1, -5, 5, -1, 5, 5, 1, -5, 5, -1, -5, 5, -1, 5, -5, 1, -5, -5, 1, 5, -5, -1, -5, -5, 1, 5, -5, -1, 5, -5, -1, -5, 5, 1, 5, -5, 1, 5, 5, 1, -5, -5, 1, 5, -5, 1, -5, 5, 1, -5, -5, -1, 5, 5, -1, 5, -5, -1, -5, 5, -1, 5, 5, -1, -5, -5, -1, -5 )
+
+[node name="World" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2554, 1.5, 26.1906 )
+
+[node name="BlueNPCInteractable" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4349, 1.5, 28.6744 )
+shape = SubResource( 8 )
+
+[node name="BlueNPC" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6491, 1.5, 27.8674 )
+navigation_node = NodePath("../Navigation")
+move_speed = 16.0
+
+[node name="NPCs" type="Spatial" parent="."]
+
+[node name="PinkNPC" parent="NPCs" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.9471, 1.5, 26.6196 )
+navigation_node = NodePath("../../Navigation")
+move_speed = 16.0
+
+[node name="GreenNPC" parent="NPCs" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5105, 1.5, -34.661 )
+navigation_node = NodePath("../../Navigation")
+move_speed = 16.0
+
+[node name="YellowNPC" parent="NPCs" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5518, 1.5, -36.7406 )
+navigation_node = NodePath("../../Navigation")
+move_speed = 16.0
+
+[node name="Sniper" parent="." instance=ExtResource( 3 )]
+
+[node name="Navigation" type="Navigation" parent="."]
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 1 )
+
+[node name="Floor" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
+transform = Transform( 3.91811, 0, 0, 0, 1, 0, 0, 0, 3.96705, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Floor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Floor/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="Box" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16138, 1, 5.44922 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Box"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Box/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="Stage" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
+transform = Transform( 0.753219, 0, 0.65777, 0, 1, 0, -0.65777, 0, 0.753219, 9.06082, -0.806548, 9.15824 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Stage"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Stage/StaticBody"]
+shape = SubResource( 7 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="PauseMenu" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="Dialog" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Dialog"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 33.0
+margin_top = -254.0
+margin_right = -34.0
+margin_bottom = -33.0
+color = Color( 0.203922, 0.247059, 0.337255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Dialog"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = -247.0
+margin_right = -39.0
+margin_bottom = -35.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Question" type="RichTextLabel" parent="Dialog/VBoxContainer"]
+margin_right = 945.0
+margin_bottom = 188.0
+size_flags_vertical = 3
+text = "Hi, welcome to the museum. Could you do me a favor and answer the following question?
+
+What is your favorite animal?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Answers" type="HBoxContainer" parent="Dialog/VBoxContainer"]
+margin_top = 192.0
+margin_right = 945.0
+margin_bottom = 212.0
+
+[node name="Button" type="Button" parent="Dialog/VBoxContainer/Answers"]
+margin_right = 233.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Cat"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="Dialog/VBoxContainer/Answers"]
+margin_left = 237.0
+margin_right = 470.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Dog"
+
+[node name="Button3" type="Button" parent="Dialog/VBoxContainer/Answers"]
+margin_left = 474.0
+margin_right = 707.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Rabbit"
+
+[node name="Button4" type="Button" parent="Dialog/VBoxContainer/Answers"]
+margin_left = 711.0
+margin_right = 945.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Bunny"
