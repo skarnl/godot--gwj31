@@ -11,7 +11,8 @@
 [ext_resource path="res://assets/models/scenery/ground_grass.obj" type="ArrayMesh" id=9]
 [ext_resource path="res://assets/models/scenery/flower_purpleB.obj" type="ArrayMesh" id=10]
 [ext_resource path="res://entities/sniper.tscn" type="PackedScene" id=11]
-[ext_resource path="res://screens/game/sniper_aim_controller.gd" type="Script" id=12]
+[ext_resource path="res://screens/game/_pocs/sniper_aim_controller.gd" type="Script" id=12]
+
 
 [sub_resource type="ConcavePolygonShape" id=1]
 
