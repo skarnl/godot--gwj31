@@ -53,8 +53,10 @@ func state_machine(delta : float) -> void:
 func state_loaded(loaded_state : int) -> void:
 	match loaded_state:
 		States.IDLE:
-			idle_timer.wait_time = rand_range(MIN_IDLE_TIME, MAX_IDLE_TIME)
+#			idle_timer.wait_time = rand_range(MIN_IDLE_TIME, MAX_IDLE_TIME)
+			idle_timer.wait_time = 999
 			idle_timer.start()
+			pass
 		
 		States.WANDERING:
 #			var attractions := get_tree().get_nodes_in_group("npc_wander_attraction")
