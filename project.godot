@@ -36,6 +36,8 @@ SceneLoader="*res://global/scene_loader.gd"
 Game="*res://global/game.gd"
 ObjectiveManager="*res://global/objective_manager.gd"
 MapGenerator="*res://global/map_generator.gd"
+Map="*res://global/map.tscn"
+MapInterpreter="*res://global/map_interpreter.gd"
 
 [display]
 
