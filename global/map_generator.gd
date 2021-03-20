@@ -73,9 +73,11 @@ func get_room(room_coords : Vector2) -> RoomData:
 
 
 func set_room(room_coords : Vector2, new_room : RoomData) -> void:
-	for r in map_data:
-		if r.position == room_coords:
-			r = new_room
+	for i in len(map_data):
+		var room = map_data[i]
+		
+		if room.position == room_coords:
+			map_data[i] = new_room
 
 
 func update_room(room_coords : Vector2) -> void:
