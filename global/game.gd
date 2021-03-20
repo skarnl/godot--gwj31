@@ -43,7 +43,7 @@ func transition_to(new_state: int) -> void:
 			SceneLoader.goto_scene(Screens.MAIN_MENU)
 		
 		GameState.GAME:
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			
 			if _current_state in {GameState.MAIN_MENU: true}:
 				_current_state = new_state
