@@ -1,4 +1,4 @@
-extends Spatial
+extends StaticBody
 
 
 const DIMENSIONS := Vector3(5, 3, 5)
