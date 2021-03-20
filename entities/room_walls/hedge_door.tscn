@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/silverr/hedge_door_5x3x0.5.gltf" type="PackedScene" id=1]
+
+[node name="HedgeDoor" type="Spatial"]
+
+[node name="hedge_door_5x3x05" parent="." instance=ExtResource( 1 )]
