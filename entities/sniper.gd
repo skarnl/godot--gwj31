@@ -28,13 +28,18 @@ func _ready() -> void:
 
 
 func on_points_at_target(body: Node) -> void:
-	if body.is_in_group('npc') and !aiming_at_target:
-		_aim_at_target(body.translation)
-	else:
-		print("Ignore " + body.get_name())
+	print('on_points_at_target')
+	
+#	if body.is_in_group('npc') and !aiming_at_target:
+#		_aim_at_target(body.translation)
+#	else:
+#		print("Ignore " + body.get_name())
 
 
 func _aim_at_target(target_position: Vector3) -> void:
+	
+	print('_aim_at_target')
+	
 	# store the last aiming position
 	last_floor_position = original_target_position
 	
@@ -82,13 +87,18 @@ func _draw_laser() -> void:
 	laser_origin.look_at_from_position(gun.translation, target.translation, Vector3.UP)
 
 
+# small deprecation function so I don't have to change it everywhere
 func move_target_to(destination: Vector3) -> void:
+	push_error('Convert code to `aim_at`')
+	
+
+func aim_at(spatial: Spatial) -> void:
 	if moving:
 		return
 	
 	moving = true
 	
-	new_target_position = destination
+	new_target_position = spatial.global_transform.origin
 	
 	
 func _move_target_to_new_position(delta: float) -> void:
