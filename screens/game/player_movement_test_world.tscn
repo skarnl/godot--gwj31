@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://entities/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/interactable_interface.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/pause_menu.tscn" type="PackedScene" id=3]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 25, 25 )
@@ -44,3 +45,5 @@ shape = SubResource( 4 )
 [node name="InteractableInterface" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57468, -0.358128, -1.99753 )
 shape = SubResource( 5 )
+
+[node name="PauseMenu" parent="." instance=ExtResource( 3 )]

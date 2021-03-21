@@ -1,0 +1,137 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://screens/main_menu/options.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/anton_dynamic_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://gui/flat_button.tres" type="StyleBox" id=3]
+[ext_resource path="res://screens/main_menu/key_list.gd" type="Script" id=4]
+[ext_resource path="res://gui/flat_button--focus.tres" type="StyleBox" id=5]
+[ext_resource path="res://screens/main_menu/change_key_dialog.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/fonts/anton/Anton.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = SubResource( 1 )
+
+[node name="Options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.203922, 0.247059, 0.337255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = -50.0
+margin_bottom = -50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Content"]
+margin_right = 924.0
+margin_bottom = 119.0
+custom_fonts/font = ExtResource( 2 )
+text = "Options"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeysHeader" type="HBoxContainer" parent="Content"]
+margin_top = 123.0
+margin_right = 924.0
+margin_bottom = 168.0
+
+[node name="ActionLabel" type="Label" parent="Content/KeysHeader"]
+margin_right = 305.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "Action"
+
+[node name="KeyLabel" type="Label" parent="Content/KeysHeader"]
+margin_left = 309.0
+margin_right = 614.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "Key"
+align = 1
+
+[node name="AlternativeLabel" type="Label" parent="Content/KeysHeader"]
+margin_left = 741.0
+margin_right = 924.0
+margin_bottom = 45.0
+size_flags_horizontal = 10
+custom_fonts/font = SubResource( 2 )
+text = "Alternative key"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Content"]
+margin_top = 172.0
+margin_right = 924.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="KeyList" type="VBoxContainer" parent="Content/ScrollContainer"]
+margin_right = 924.0
+margin_bottom = 328.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 391.5
+margin_top = 525.64
+margin_right = 632.5
+margin_bottom = 580.64
+size_flags_vertical = 3
+custom_styles/hover = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 3 )
+custom_colors/font_color_pressed = Color( 0.203922, 0.247059, 0.337255, 1 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChangeKeyDialog" type="Panel" parent="."]
+visible = false
+self_modulate = Color( 0.219608, 0.486275, 0.427451, 0.494118 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ChangeKeyDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -211.5
+margin_top = -59.5
+margin_right = 211.5
+margin_bottom = 59.5
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.913725, 0.537255, 0.415686, 1 )
+text = "PRESS A KEY..."
+__meta__ = {
+"_edit_use_anchors_": false
+}

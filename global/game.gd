@@ -4,7 +4,7 @@ extends Node
 
 
 var Screens = {
-	MAIN_MENU = 'res://screens/main_menu.tscn',
+	MAIN_MENU = 'res://screens/main_menu/main_menu.tscn',
 	GAME = 'res://screens/game/game.tscn',
 	PLAYER_MOVEMENT_TEST = 'res://screens/game/player_movement_test_world.tscn'
 }
@@ -20,15 +20,12 @@ enum GameState {
 
 var _current_state: int = GameState.SPLASH setget _set_current_state
 var _previous_state: int
-var settings := {
-	"look_sensitivity" : 200
-}
 
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	
-	
+
 func start_game():
 	transition_to(GameState.GAME)
 	
@@ -47,7 +44,7 @@ func transition_to(new_state: int) -> void:
 			
 			if _current_state in {GameState.MAIN_MENU: true}:
 				_current_state = new_state
-				SceneLoader.goto_scene(Screens.GAME)
+				SceneLoader.goto_scene(Screens.PLAYER_MOVEMENT_TEST)
 				
 #			match new_state:
 #				GameState.PAUSED:
